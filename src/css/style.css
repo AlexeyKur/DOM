@@ -20,6 +20,6 @@
 }
 
 .goblin {
-  background-image: url(./img/goblin.png);
+  background-image: url("/src/img/goblin.png");
   background-size: cover;
 }
