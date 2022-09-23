@@ -1,13 +1,28 @@
-const cell = Array.from(document.querySelectorAll('.cell'));
-
-setInterval(() => {
-  const index = Math.floor(Math.random() * cell.length);
-  cell.forEach((item) => {
-    item.classList.remove('goblin');
-  });
-  if (cell[index].classList.contains('goblin')) {
-    cell[index].classList.remove('goblin');
-  } else {
-    cell[index].classList.add('goblin');
+export default class Game {
+  constructor(cell) {
+    this.cell = cell;
+    this.int = 0;
   }
-}, 1000);
+
+  goblin() {
+    const index = Math.floor(Math.random() * this.cell.length);
+    this.cell.forEach((item) => {
+      item.classList.remove('goblin');
+    });
+    this.cell[index].classList.add('goblin');
+  }
+
+  startGame() {
+    const interval = setInterval(() => {
+      this.goblin();
+    }, 1000);
+    this.int = interval;
+  }
+
+  stopGame() {
+    clearInterval(this.int);
+    this.cell.forEach((item) => {
+      item.classList.remove('goblin');
+    });
+  }
+}
